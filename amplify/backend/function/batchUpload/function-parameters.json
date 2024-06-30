@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "api": {
+      "conflicttracker": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "conflicttracker4566c943": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

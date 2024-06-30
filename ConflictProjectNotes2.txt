@@ -1,0 +1,20 @@
+1. Test if photo upload works
+	- storage access ok
+1. Test if Apollo access working
+	- batchTest does nothing but execute a lambda function
+	- Create new lambda function
+		- Update cloudformation template**??
+	- Can use doCountryWrite Apollo mutation
+
+1. Add mutation
+- Create a new lambda function
+2. Push the CSV data into object
+3. Do the test function with the data object
+4. See if it is logged in the cloudwatch 
+
+da2-h7vqkofjhba7jejmlzoz4otpba
+https://stackoverflow.com/questions/71006168/amplify-api-graphql-unable-to-change-local-api-key-with-the-one-generated-onli
+
+
+Previously I could understand the docs properly and set up Apollo Client
+Need to set up Amplify v6 as well vs v5

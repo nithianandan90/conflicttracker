@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-conflicttracker-dev-110116-authRole",
+      "UnauthRoleArn": "arn:aws:iam::424317972414:role/amplify-conflicttracker-dev-110116-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::424317972414:role/amplify-conflicttracker-dev-110116-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-conflicttracker-dev-110116-deployment",
+      "UnauthRoleName": "amplify-conflicttracker-dev-110116-unauthRole",
+      "StackName": "amplify-conflicttracker-dev-110116",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:424317972414:stack/amplify-conflicttracker-dev-110116/cadc9470-e4d3-11ee-9ce9-02b54b196769",
+      "AmplifyAppId": "d2if7s10nx5omm"
+    },
+    "categories": {
+      "auth": {
+        "conflicttracker4566c943": {}
+      },
+      "storage": {
+        "S3Tracker": {}
+      },
+      "api": {
+        "conflicttracker": {}
+      },
+      "function": {
+        "batchUpload": {
+          "deploymentBucketName": "amplify-conflicttracker-dev-110116-deployment",
+          "s3Key": "amplify-builds/batchUpload-656a766d304b6d483931-build.zip"
+        }
+      }
+    }
+  }
+}

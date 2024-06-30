@@ -1,0 +1,90 @@
+type LatestNews @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Headline: String
+  Content: String
+  Conflicts: [Conflict] @hasMany(indexName: "byLatestNews", fields: ["id"])
+  Images: [String]
+}
+
+type People @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Name: String
+  Description: String
+  Role: String
+  Conflicts: [Conflict] @hasMany(indexName: "byPeople", fields: ["id"])
+}
+
+type Commodities @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Name: String
+  Image: String
+  conflictID: ID! @index(name: "byConflict")
+}
+
+enum Nature {
+  POLITICAL
+  ECONOMIC
+  SOCIAL
+  CIVIL
+  INTERNATIONAL
+  ENVIRONMENTANDRESOURCE
+  HEALTH
+}
+
+enum ConflictStatus {
+  IMPROVING
+  WORSENING
+  UNCHANGED
+}
+
+type Conflict @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Name: String
+  Countries: [Country] @hasMany(indexName: "byConflict", fields: ["id"])
+  Description: String
+  Travel: String
+  Images: [String]
+  Status: ConflictStatus
+  Nature: Nature
+  Commodities: [Commodities] @hasMany(indexName: "byConflict", fields: ["id"])
+  peopleID: ID @index(name: "byPeople")
+  latestnewsID: ID @index(name: "byLatestNews")
+}
+
+type Country @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Flag: String
+  Name: String
+  Code: String
+  Population: String
+  conflictID: ID! @index(name: "byConflict")
+}
+
+type Todo @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type TestTable @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  Flag: String
+  Name: String
+  Code: String
+  Population: String
+  conflictID: String
+}
+
+input CreateCountryInput {
+  id: ID
+  Flag: String
+  Name: String
+  Code: String
+  Population: String
+  conflictID: ID!
+  _version: Int
+}
+
+type Mutation {
+  batchTest(input: [CreateCountryInput]!): Country @function(name: "batchUpload-${env}")
+}

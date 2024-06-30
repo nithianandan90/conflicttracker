@@ -1,0 +1,73 @@
+1. Hook up AWS 
+	- Hook up AWS Amplify*
+	- API Codegen*
+	- Set up S3 Bucket
+		- Set up imagecompresser (check if needed first)*	
+	- Hook up Apollo Client*
+2. Design Data Architecture
+	- Country*
+		- Flag
+		- Name
+		- Code
+		- Population
+		- Conflicts
+		 
+	- User
+		- Not necessary now, later can follow the set up used for instalearning
+	- Latest News*
+		- Headline
+		- Images	
+		- Content
+		- Conflict (News hasMany conflict)
+	- Conflict*
+		- Country
+		- Name
+		- Description
+		- Export Commodities	
+		- Travel Risk
+		- Images
+		- Status (ENUM)
+			- Improving
+			- Worsening
+			- Unchanged
+		- Nature of instability (ENUM)
+			- Political Instability
+			- Economic Instability
+			- Social Instability
+			- Civil War
+			- International Conflict
+			- Environmental and Resource Instability
+			- Health-Related Instability
+	- Key People*
+		- Name
+		- Description
+		- Role
+		- Conflict (hasMany)
+	- Export Commodities*
+		- Name
+		- image
+	- Assistance
+		- Country (hasMany)
+		- Company name
+		- Contact
+		- Email
+		- Website
+	
+3. Source of Data
+	- Use cfr conflict tracker
+4. Design
+	- Try one card
+	- Try several entries on the table
+	- Table sorting problem
+	- Try the map 
+5. Pages 
+	- How to amend template for the different pages
+	- Pages
+		- Main Page
+		- Conflict Details Page
+		- Conflict Updatding Form
+4. Newsletter Plugin
+5. Adding to UI
+
+
+Im still not entirely sure how permissions are granted to lambda functions. Is a new role created or new user created?1. 8:23 AM 9/5/2024

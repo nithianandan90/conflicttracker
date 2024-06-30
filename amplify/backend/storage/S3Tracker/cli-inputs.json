@@ -1,0 +1,18 @@
+{
+  "resourceName": "S3Tracker",
+  "policyUUID": "d69203ee",
+  "bucketName": "conflicttracker90829f06ac00450798fdba935d87a154",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
