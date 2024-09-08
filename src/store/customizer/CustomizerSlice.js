@@ -6,6 +6,7 @@ const initialState = {
   isRTL: false,
   isDark: true,
   isMiniSidebar: false,
+  isMiniSidebarCustom: false,
   sidebarBg: 'white',
   isTopbarFixed: true,
   isMobileSidebar: false,
@@ -32,6 +33,9 @@ export const CustomizerSlice = createSlice({
     },
     ToggleMiniSidebar: (state) => {
       state.isMiniSidebar = !state.isMiniSidebar;
+    },
+    ToggleMiniSidebarCustom: (state) => {
+      state.isMiniSidebarCustom = !state.isMiniSidebarCustom;
     },
     ChangeSidebarColor: (state, action) => {
       state.sidebarBg = action.payload;
@@ -63,6 +67,7 @@ export const {
   ChangeSidebarColor,
   ToggleTopbar,
   ToggleMobileSidebar,
+  ToggleMiniSidebarCustom,
   FixedSidebar,
   ToggleHorizontal,
   ToggleInnerRightPart,

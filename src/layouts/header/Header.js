@@ -20,7 +20,11 @@ import NotificationDD from './NotificationDD';
 import MegaDD from './MegaDD';
 import user1 from '../../assets/images/users/user4.jpg';
 import Logo from '../logo/Logo';
-import { ToggleMiniSidebar, ToggleMobileSidebar } from '../../store/customizer/CustomizerSlice';
+import {
+  ToggleMiniSidebar,
+  ToggleMobileSidebar,
+  ToggleMiniSidebarCustom,
+} from '../../store/customizer/CustomizerSlice';
 import ProfileDD from './ProfileDD';
 
 const Header = () => {
@@ -40,13 +44,13 @@ const Header = () => {
         {/********Logo*******/}
         <div className="d-none d-lg-flex align-items-center logo-space">
           <Logo />
-          <span className='d-sm-block d-lg-none'>
-          <Button
-            close
-            size="sm"
-            className="ms-auto "
-            onClick={() => dispatch(ToggleMobileSidebar())}
-          />
+          <span className="d-sm-block d-lg-none">
+            <Button
+              close
+              size="sm"
+              className="ms-auto "
+              onClick={() => dispatch(ToggleMobileSidebar())}
+            />
           </span>
         </div>
         {/******************************/}
@@ -56,7 +60,10 @@ const Header = () => {
           <Button
             color={topbarColor}
             className="d-none d-lg-block mx-1 bg-transparent border-0"
-            onClick={() => dispatch(ToggleMiniSidebar())}
+            onClick={() => {
+              // alert('toggled');
+              dispatch(ToggleMiniSidebarCustom());
+            }}
           >
             <Icon.Menu size={18} />
           </Button>
@@ -80,7 +87,41 @@ const Header = () => {
           {/******************************/}
           {/**********Mega DD**********/}
           {/******************************/}
-          <UncontrolledDropdown className="mega-dropdown mx-1">
+          {/* <UncontrolledDropdown className="mega-dropdown mx-1">
+            <DropdownToggle className="bg-transparent border-0" color={topbarColor}>
+              <Icon.Grid size={18} />
+            </DropdownToggle>
+            <DropdownMenu>
+              <MegaDD />
+            </DropdownMenu>
+          </UncontrolledDropdown> */}
+          {/* <NavItem className="d-md-block d-none">
+            <Link to="/about" className={`nav-link ${topbarColor === 'white' ? 'text-dark' : ''}`}>
+              About
+            </Link>
+          </NavItem> */}
+        </Nav>
+
+        <div className="d-flex align-items-center">
+          <Nav className="me-auto d-flex flex-row align-items-center" navbar>
+            <NavItem className="d-md-block d-none">
+              <Link
+                to="/dashboards/dashboard4"
+                className={`nav-link ${topbarColor === 'white' ? 'text-dark' : ''}`}
+              >
+                Home
+              </Link>
+            </NavItem>
+            <NavItem className="d-md-block d-none">
+              <Link
+                to="/about"
+                className={`nav-link ${topbarColor === 'white' ? 'text-dark' : ''}`}
+              >
+                About
+              </Link>
+            </NavItem>
+          </Nav>
+          <UncontrolledDropdown className="mega-dropdown-right mx-1">
             <DropdownToggle className="bg-transparent border-0" color={topbarColor}>
               <Icon.Grid size={18} />
             </DropdownToggle>
@@ -88,18 +129,11 @@ const Header = () => {
               <MegaDD />
             </DropdownMenu>
           </UncontrolledDropdown>
-          <NavItem className="d-md-block d-none">
-            <Link to="/about" className={`nav-link ${topbarColor === 'white' ? 'text-dark' : ''}`}>
-              About
-            </Link>
-          </NavItem>
-        </Nav>
 
-        <div className="d-flex align-items-center">
           {/******************************/}
           {/**********Notification DD**********/}
           {/******************************/}
-          <UncontrolledDropdown className="mx-1">
+          {/* <UncontrolledDropdown className="mx-1">
             <DropdownToggle className="bg-transparent border-0" color={topbarColor}>
               <Icon.MessageSquare size={18} />
             </DropdownToggle>
@@ -118,11 +152,11 @@ const Header = () => {
                 </Button>
               </div>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
           {/******************************/}
           {/**********Message DD**********/}
           {/******************************/}
-          <UncontrolledDropdown className="mx-1">
+          {/* <UncontrolledDropdown className="mx-1">
             <DropdownToggle className="bg-transparent border-0" color={topbarColor}>
               <Icon.Mail size={18} />
             </DropdownToggle>
@@ -141,11 +175,11 @@ const Header = () => {
                 </Button>
               </div>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
           {/******************************/}
           {/**********Profile DD**********/}
           {/******************************/}
-          <UncontrolledDropdown>
+          {/* <UncontrolledDropdown>
             <DropdownToggle color="transparent">
               <img src={user1} alt="profile" className="rounded-circle" width="30" />
             </DropdownToggle>
@@ -157,7 +191,7 @@ const Header = () => {
                 </Button>
               </div>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
         </div>
       </Navbar>
     </>

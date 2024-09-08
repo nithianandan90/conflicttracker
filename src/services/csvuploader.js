@@ -1,21 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { API, graphqlOperation } from 'aws-amplify';
 import { parse } from 'papaparse';
 import PropTypes from 'prop-types';
-import { useQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { batchTest } from './queries';
 
 // Your GraphQL mutation. Use Apollo Client or other GraphQL client
 
 const CSVUploader = ({ uploadModel }) => {
   const [file, setFile] = useState(null);
   const [parsedData, setParsedData] = useState([]);
+  const tempData = [];
   // stateofData
 
   // use Apollo here to do a mutation
+  const [doBatchUpload] = useMutation(batchTest);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
+
+  useEffect(() => {
+    console.log('effect triggered', parsedData.length);
+
+    if (parsedData.length > 0) {
+      console.log('effect condition met');
+      const uploadData = async () => {
+        if (parsedData.length > 0) {
+          console.log('parsedData', parsedData);
+          try {
+            const response = await doBatchUpload({ variables: { input: parsedData } });
+            console.log('response', response);
+          } catch (error) {
+            console.error('Error during batch upload:', error);
+          }
+        }
+      };
+
+      uploadData();
+    }
+  }, [parsedData, doBatchUpload]);
 
   const uploadData = () => {
     if (!file) return;
@@ -30,6 +54,8 @@ const CSVUploader = ({ uploadModel }) => {
       step: (row, parser) => {
         try {
           console.log('row', row.data);
+
+          tempData.push(row.data);
           // processRow(row.data);
         } catch (error) {
           console.error('Error processing row:', error);
@@ -52,10 +78,14 @@ const CSVUploader = ({ uploadModel }) => {
         //   // }
         // });
       },
-      complete: () => {
-        console.log('All rows processed', JSON.stringify(parsedData));
-        setParsedData(parsedData);
+      complete: async () => {
+        tempData.pop();
+        console.log('All rows processed', JSON.stringify(tempData));
+
+        setParsedData(tempData);
+
         // send array of data to the apollo function to trigger lambda function
+        // unable to access apollo function in here
       },
       header: true,
     });

@@ -44,24 +44,24 @@ const Dashboard4 = () => {
           <Col lg="4">
             <SalesDifference />
           </Col>
-          <Col lg="4">
+          {/* <Col lg="4">
             <ApolloTest />
-          </Col>
+          </Col> */}
         </Row>
       </Row>
-      <CalendarApp />
-      <Row>
+      {/* <CalendarApp /> */}
+      {/* <Row>
         <Col lg="4">
           <Chat />
         </Col>
         <Col lg="4">
-          {/* <RecentMessages /> */}
+          <RecentMessages />
           <CountriesUpload />
         </Col>
         <Col lg="4">
           <UploadForm />
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 };

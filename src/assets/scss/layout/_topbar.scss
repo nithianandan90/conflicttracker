@@ -33,6 +33,18 @@
   }
 }
 
+.mega-dropdown-right {
+  position: static;
+  .dropdown-menu {
+    padding: 30px;
+    width: 96%;
+    // left: -2% !important;
+    max-height: 480px;
+    top: 11px !important;
+    overflow: auto;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .fixedTopbar {
     .topbar {
